@@ -1,6 +1,7 @@
 # keras_callbacks_example
 
 ```
+$ python mnist_cnn.py
 Using Theano backend.
 Couldn't import dot_parser, loading of dot files will not be possible.
 X_train shape: (60000, 1, 28, 28)
