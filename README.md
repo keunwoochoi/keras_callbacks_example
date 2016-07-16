@@ -1,7 +1,16 @@
 # keras_callbacks_example
 
+### What is it?
+It is just an example code to check out how to define your own keras callback functions.
+More details are explained in [my blog post](https://keunwoochoi.wordpress.com/2016/07/16/keras-callbacks/)
+
+### How to run
+(after install keras and sklearn)
 ```
 $ python mnist_cnn.py
+```
+### Result
+```
 Using Theano backend.
 Couldn't import dot_parser, loading of dot files will not be possible.
 X_train shape: (60000, 1, 28, 28)
