@@ -4,6 +4,14 @@
 It is just an example code to check out how to define your own keras callback functions.
 More details are explained in [my blog post](https://keunwoochoi.wordpress.com/2016/07/16/keras-callbacks/)
 
+### What does it do?
+Nothing but
+- compute `roc_auc_score` at the end of every epoch
+- store it (and loss)
+- print it at the end.
+
+I modified `mnist_cnn.py` from keras example so that it is really quick and useless for testing purpose.
+
 ### How to run
 (after install keras and sklearn)
 ```
