@@ -12,7 +12,7 @@ np.random.seed(1337)  # for reproducibility
 from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
-from keras.layers import Convolution2D, MaxPooling2D
+from keras.layers import Conv2D, MaxPooling2D
 from keras.utils import np_utils
 
 import my_callbacks
@@ -50,11 +50,11 @@ Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 model = Sequential()
 
-model.add(Convolution2D(nb_filters, nb_conv, nb_conv,
-                        border_mode='same',
-                        input_shape=(1, img_rows, img_cols)))
+model.add(Conv2D(nb_filters, (nb_conv, nb_conv),
+                        padding='same',
+                        data_format='channels_first', input_shape=(1, img_rows, img_cols)))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(img_rows/2, img_cols/2)))
+model.add(MaxPooling2D(pool_size=(int(img_rows/2), int(img_cols/2)), padding='same'))
 
 model.add(Flatten())
 model.add(Dense(nb_classes))
@@ -67,7 +67,7 @@ model.compile(loss='categorical_crossentropy',
 histories = my_callbacks.Histories()
 
 # fit
-model.fit(X_train, Y_train, batch_size=batch_size, nb_epoch=nb_epoch,
+model.fit(X_train, Y_train, batch_size=batch_size, epochs=nb_epoch,
           verbose=1, validation_data=(X_test, Y_test), callbacks=[histories])
 
 print(histories.losses)
